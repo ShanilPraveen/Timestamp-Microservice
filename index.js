@@ -25,6 +25,28 @@ app.get("/api/hello", function (req, res) {
 });
 
 
+app.get('/api', (req, res) => {
+  const now = new Date();
+  res.json({
+    unix: now.getTime(),
+    utc: now.toUTCString()
+  });
+});
+
+app.get('/api/:param', (req, res) => {
+  const input = req.params.param;
+  let now;
+  if (input.includes('-')){
+    now = new Date(input);
+  }
+  else{
+    now = new Date(parseInt(input));
+  }
+  res.json({
+    unix: now.getTime(),
+    utc: now.toUTCString()
+  });
+});
 
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {
