@@ -33,6 +33,7 @@ app.get('/api', (req, res) => {
   });
 });
 
+//I got this
 app.get('/api/:param', (req, res) => {
   const input = req.params.param;
   let now;
