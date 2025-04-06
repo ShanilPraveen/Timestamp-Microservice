@@ -42,10 +42,16 @@ app.get('/api/:param', (req, res) => {
   else{
     now = new Date(parseInt(input));
   }
-  res.json({
-    unix: now.getTime(),
-    utc: now.toUTCString()
-  });
+  if (now.toString() === 'Invalid Date'){
+    return res.json({error: 'Invalid Date'});
+  }
+  else{
+    return res.json({
+      unix: now.getTime(),
+      utc: now.toUTCString()
+    });
+  }
+
 });
 
 // Listen on port set in environment variable or default to 3000
