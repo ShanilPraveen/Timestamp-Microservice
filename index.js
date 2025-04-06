@@ -36,7 +36,7 @@ app.get('/api', (req, res) => {
 app.get('/api/:param', (req, res) => {
   const input = req.params.param;
   let now;
-  if (input.includes('-')){
+  if (isNaN(input)){
     now = new Date(input);
   }
   else{
